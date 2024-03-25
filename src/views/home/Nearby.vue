@@ -135,7 +135,7 @@ export default {
   },
   methods: {
     shopDetails (item) {
-      this.$router.push({ name: 'Shop', query: { item: item } })
+      this.$router.push({ name: 'Shop', query: { pid: item.id, lid: item.id } })
     }
   }
 }

@@ -7,8 +7,8 @@
                 <input class="search__content__input" placeholder="请输入商品名称"/>
             </div>
         </div>
-        <ShopInfo :id=" this.$route.query.id" />
-        <Content />
+        <ShopInfo :id=" this.$route.query.pid" />
+        <Content :id=" this.$route.query.lid"/>
     </div>
  </template>
 <script>
@@ -16,7 +16,7 @@ import ShopInfo from '../../components/ShopInfo.vue'
 import Content from '../../views/shop/Content.vue'
 export default {
   components: { ShopInfo, Content },
-  props: ['items'],
+  props: ['id'],
   name: 'Shop',
   methods: {
     backClick () {

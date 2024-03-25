@@ -1,22 +1,20 @@
 <template>
     <div class="content">
-        <div class="category" >
-            <div class="category__item category__item--active">商品秒杀</div>
-            <div class="category__item">商品秒杀</div>
-            <div class="category__item">商品秒杀</div>
-            <div class="category__item">商品秒杀</div>
-            <div class="category__item">商品秒杀</div>
-            <div class="category__item">商品秒杀</div>
+        <div class="category">
+            <div :class="{'category__item' : true, 'category__item--active': item.currentTag}" v-for="(item,id) in categoryList"
+            :key="id"
+            @click="() => handlerClick(item)"
+            >{{ item.name }}</div>
         </div>
         <div class="product">
-            <div class="product__item">
+            <div class="product__item" v-for="(item,index) in contentList" :key="index">
                 <img src="http://www.dell-lee.com/imgs/vue3/超市.png"  class="product__item__img">
                 <div class="product__item__detail">
-                    <h4 class="product__item__title">番茄</h4>
-                    <p class="product__item__sales">月售</p>
+                    <h4 class="product__item__title">{{ item.name }}</h4>
+                    <p class="product__item__sales">{{ item.stales }}</p>
                     <p class="product__item__price">
-                        <span class="product__item__yen">&yen;</span>33.6
-                        <span class="product__item__origin">&yen;66.6</span>
+                        <span class="product__item__yen">&yen;{{ item.price }}</span>
+                        <span class="product__item__origin">&yen;{{ item.old }}</span>
                     </p>
                 </div>
                 <div class="product__number">
@@ -29,15 +27,56 @@
     </div>
  </template>
 <script>
+import { reactive } from 'vue'
+const list = (a) => {
+  return a + 1
+}
 export default {
   name: 'Content',
+  props: ['id'],
   data () {
     return {
-
+      categoryList: reactive([{
+        name: '商品',
+        tag: 'all',
+        currentTag: reactive(true)
+      },
+      {
+        name: '秒杀',
+        tag: 'kill',
+        currentTag: reactive(false)
+      },
+      {
+        name: '水果',
+        tag: 'apple',
+        currentTag: reactive(false)
+      }
+      ]),
+      contentList: [
+        {
+          name: '番茄',
+          stales: '月售1万',
+          price: '33',
+          old: '66'
+        },
+        {
+          name: '番茄',
+          stales: '月售1万',
+          price: '33',
+          old: '66'
+        }
+      ]
     }
   },
   methods: {
-
+    handlerClick (item) {
+      console.log(list(1))
+      console.log(this.$route.params)
+      this.categoryList.forEach(elem => {
+        elem.currentTag = false
+      })
+      item.currentTag = true
+    }
   }
 }
 </script>
@@ -54,10 +93,12 @@ export default {
     overflow-y: scroll;
     background: #f5f5f5;
     height: 100%;
-    width: .8rem;
+    width: 1rem;
     &__item {
         line-height: .4rem;
         text-align: center;
+        margin: .2rem 0;
+        font-size: .2rem;
         &--active {
             background: #fff;
         }
