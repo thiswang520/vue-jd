@@ -12,7 +12,7 @@
             <div class="product__item">
                 <img src="http://www.dell-lee.com/imgs/vue3/超市.png"  class="product__item__img">
                 <div class="product__item__detail">
-                    <h4 class="product__item__title">番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄番茄</h4>
+                    <h4 class="product__item__title">番茄</h4>
                     <p class="product__item__sales">月售</p>
                     <p class="product__item__price">
                         <span class="product__item__yen">&yen;</span>33.6
