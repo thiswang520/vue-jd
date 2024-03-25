@@ -8,7 +8,7 @@
              <div class="shop__content__tags" v-for="(tag,index) in itemDetails.tags" :key="index">
                <span class="shop__content__tag">{{ tag.tag }}</span>
            </div>
-           <p class="shop__content__high">VIP.........</p>
+           <p class="shop__content__high">VIP尊享888.........</p>
        </div>
      </div>
    </div>
