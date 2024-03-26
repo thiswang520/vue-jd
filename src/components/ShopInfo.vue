@@ -24,7 +24,7 @@ export default {
           iconUrl: 'http://www.dell-lee.com/imgs/vue3/超市.png',
           iconName: '超市便利',
           title: '沃尔玛',
-          id: '1',
+          pid: '1',
           tags: [
             {
               tag: '月售1w+ 月售1w+ 月售1w+'

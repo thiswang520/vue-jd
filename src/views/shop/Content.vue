@@ -20,19 +20,21 @@
                 <div class="product__number">
                     <span class="product__number__minus">-</span>
                     <span>0</span>
-                    <span class="product__number__add">+</span>
+                    <span @click="addShop(item)" class="product__number__add">+</span>
                 </div>
             </div>
         </div>
     </div>
+    <Cart />
  </template>
 <script>
 import { reactive } from 'vue'
-const list = (a) => {
-  return a + 1
-}
+
+import Cart from '../shop/Cart.vue'
+
 export default {
   name: 'Content',
+  components: { Cart },
   props: ['id'],
   data () {
     return {
@@ -54,28 +56,39 @@ export default {
       ]),
       contentList: [
         {
+          pid: '1',
+          lid: '1',
           name: '番茄',
           stales: '月售1万',
           price: '33',
-          old: '66'
+          old: '66',
+          count: 2
         },
         {
+          pid: '2',
+          lid: '2',
           name: '番茄',
           stales: '月售1万',
           price: '33',
-          old: '66'
+          old: '66',
+          count: 2
         }
       ]
     }
   },
   methods: {
     handlerClick (item) {
-      console.log(list(1))
       console.log(this.$route.params)
       this.categoryList.forEach(elem => {
         elem.currentTag = false
       })
       item.currentTag = true
+    },
+    addShop (item) {
+      // 提交数据到vuex
+      console.log(this.$store.commit('addShop', item))
+      // 获取vuex里面的数据
+      console.log(this.$store.state.cartList)
     }
   }
 }
